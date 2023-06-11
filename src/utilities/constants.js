@@ -1,0 +1,34 @@
+const { QueryType } = require('discord-player');
+const ffmpeg = require('@ffmpeg-installer/ffmpeg');
+
+process.env.FFMPEG_PATH = ffmpeg.path;
+process.env.DP_NO_FFMPEG_WARN = true;
+
+const constants = {
+    config: {
+        name                : 'Bot Music',
+        prefix              : '!',
+        playing             : 'play music',
+        defaultVolume       : 50,
+        maxVolume           : 100,
+        autoLeave           : true,
+        autoLeaveCooldown   : 5000,
+        displayVoiceState   : true,
+        port                : 33333,
+        urlQuery            : QueryType.AUTO,
+        textQuery           : QueryType.AUTO
+    },
+    ytdlOptions: {
+        filter          : 'audioonly',
+        quality         : 'highestaudio',
+        highWaterMark   : 1 << 27
+    },
+    color: {
+        white   : '\x1B[0m',
+        grey    : '\x1B[2m',
+        green   : '\x1B[32m',
+        cyan    : '\x1B[36m'
+    }
+};
+
+module.exports = constants;
